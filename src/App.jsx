@@ -2,56 +2,30 @@ import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './App.css';
+import FIRE_DISTRICT_ZONES from './fireDistrictZones';
 
 // Replace with your Mapbox access token
 mapboxgl.accessToken = 'pk.eyJ1Ijoiam9yZHZhdWciLCJhIjoiY21ncmVsejlkMDVzMjJqcHZsOWN3YWNtMiJ9.SNC6R8RPSRAXm5Fbxt7w5g';
 
-// Define your zones (using GeoJSON polygon format)
-// These are example zones for Bellevue, WA area - replace with your actual FD districts
-const ZONES = [
-  {
-    id: 'zone-1',
-    name: 'Fire District 1',
-    color: '#FF6B6B',
-    coordinates: [
-      [
-        [-122.2015, 47.6101],
-        [-122.1815, 47.6101],
-        [-122.1815, 47.5901],
-        [-122.2015, 47.5901],
-        [-122.2015, 47.6101]
-      ]
-    ]
-  },
-  {
-    id: 'zone-2',
-    name: 'Fire District 2',
-    color: '#4ECDC4',
-    coordinates: [
-      [
-        [-122.1815, 47.6101],
-        [-122.1615, 47.6101],
-        [-122.1615, 47.5901],
-        [-122.1815, 47.5901],
-        [-122.1815, 47.6101]
-      ]
-    ]
-  },
-  {
-    id: 'zone-3',
-    name: 'Fire District 3',
-    color: '#45B7D1',
-    coordinates: [
-      [
-        [-122.2015, 47.6301],
-        [-122.1815, 47.6301],
-        [-122.1815, 47.6101],
-        [-122.2015, 47.6101],
-        [-122.2015, 47.6301]
-      ]
-    ]
-  }
+// Color palette for the 10 fire districts
+const DISTRICT_COLORS = [
+  '#FF6B6B', // District 1 - Red
+  '#4ECDC4', // District 2 - Teal
+  '#45B7D1', // District 3 - Blue
+  '#96CEB4', // District 4 - Green
+  '#FFEAA7', // District 5 - Yellow
+  '#DFE6E9', // District 6 - Gray
+  '#74B9FF', // District 7 - Light Blue
+  '#A29BFE', // District 8 - Purple
+  '#FD79A8', // District 9 - Pink
+  '#FDCB6E'  // District 10 - Orange
 ];
+
+// Map the fire district zones with colors
+const ZONES = FIRE_DISTRICT_ZONES.map((zone, index) => ({
+  ...zone,
+  color: DISTRICT_COLORS[index % DISTRICT_COLORS.length]
+}));
 
 // Point-in-polygon algorithm to check if coordinates are inside a zone
 function isPointInPolygon(point, polygon) {
