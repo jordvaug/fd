@@ -1,0 +1,178 @@
+.app {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 400px;
+  background: #ffffff;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  z-index: 1;
+}
+
+.sidebar-content {
+  padding: 30px;
+}
+
+h1 {
+  margin: 0 0 10px 0;
+  font-size: 28px;
+  color: #333;
+}
+
+.description {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+.address-input {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.address-input:focus {
+  outline: none;
+  border-color: #4ECDC4;
+}
+
+.address-input:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+button {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  background: #4ECDC4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover:not(:disabled) {
+  background: #45b3aa;
+}
+
+button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+.error-message {
+  background: #ffebee;
+  color: #c62828;
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  border-left: 4px solid #c62828;
+}
+
+.zone-info {
+  background: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border-left: 4px solid #4ECDC4;
+}
+
+.zone-info.no-zone {
+  border-left-color: #ffa726;
+  background: #fff3e0;
+}
+
+.zone-info h2 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.zone-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin: 5px 0;
+}
+
+.zone-id {
+  font-size: 14px;
+  color: #666;
+  margin: 5px 0 0 0;
+}
+
+.zones-list {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.zones-list h3 {
+  margin: 0 0 15px 0;
+  font-size: 16px;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.zones-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.zones-list li {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.zone-color {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  margin-right: 12px;
+}
+
+.map-container {
+  flex: 1;
+  position: relative;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    max-height: 50vh;
+  }
+
+  .map-container {
+    height: 50vh;
+  }
+}
